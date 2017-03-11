@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>5 Métodos para manejo de datos en JS</title>
+    </head>
+    <body class="body-post">
+        <div class="cover">
+            <div class="burguer burguer-post" id="menu-button">
+                <span class="burguer-button"><i class=" fa fa-bars"   aria-hidden="true" ></i></span>
+            </div>
+            <div class="nav post-nav" id="nav">
+                <ul>
+                    <li><img src="images/frontend.png" alt="Frontend" width="60" height="60"><span>Frontend</span></li>
+                    <li><img src="images/backend.png" alt="Backend" width="60" height="60"><span>Backend</span></li>
+                    <li><img src="images/marketing.png" alt="Marketing" width="60" height="60"><span>Marketing</span></li>
+                    <li><img src="images/product.png" alt="Diseño de productos" width="60" height="60"><span>UX</span></li>
+                </ul>
+                <form action="#" class="nav-form">
+                    <input class="newsletter-input" type="text" placeholder="Buscar...">
+                    <input class="newsletter-btn " type="submit" value="Go!">
+                </form>
+            </div>
+            <div class="cover-title">
+                <h1>5 Métodos para manejo de datos en JS</h1>
+            </div>
+        </div>
+        <div class="container-post">
+            <div class="newsletter ">
+                    <!-- Begin MailChimp Signup Form -->
+                    <div id="mc_embed_signup">
+                        <form method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                            <div id="mc_embed_signup_scroll">
+                            <h2 class="newsletter-title">Campo de prueba para suscripcion, <b>Suscribete!</b></h2>
+
+                            <input class="newsletter-input" type="email" placeholder="Tu Correo..." value="" name="EMAIL" class="required email" id="mce-EMAIL">
+
+                            <input class="newsletter-input" type="text" placeholder="Tu Nombre..." value="" name="NAME" class="required" id="mce-NAME">
+
+                            <div id="mce-responses" class="clear">
+                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                <div class="response" id="mce-success-response" style="display:none"></div>
+                            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d3529647fd00ff47c141050ee_3e5b743a1e" tabindex="-1" value=""></div>
+                            <div class="clear">
+                            <input class="newsletter-btn" type="submit" value="Go!" name="subscribe" id="mc-embedded-subscribe" class="button">
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--End mc_embed_signup-->
+            </div>
+
+            <div class="letter-post">
+
+                <p>Cuando estamos desarrollando una aplicación web, el 90% de los datos que recibimos desde el back-end se encuentran contenidos en arreglos, por esta razón es fundamental que conozcas estos 5 métodos nativos de javascript que te harán la vida mas fácil a la hora de manipular los datos que contienen.</p>
+
+                <h2>1. Array.map()</h2>
+                <p>Para mi este, es el método mas importante de todos. Con esta función olvídate de utilizar ciclos for para recorrer y manipular arreglos.</p>
+<pre>
+    <code class="language-javascript">
+    var array = [1,2,3,4,5];
+
+    array.map(function(num){
+      return num * num;
+    });
+    </code>
+</pre>
+                <p>El método map() itera y retorna un nuevo arreglo con sus elementos modificados dependiendo de la función que se le aplique como parámetro. En este caso me devuelve un arreglo con cada elemento multiplicado por si mismo.</p>
+
+                <h2>2. Array.filter()</h2>
+                <p>El método filter() tiene un comportamiento similar al anterior, con la única diferencia de que el nuevo arreglo contendrá los elementos que pasen por un filtro.</p>
+                <p>Ejemplo:</p>
+<pre>
+    <code class="language-javascript">
+    var array = [1,'a','b',0,15,1];
+
+    array.filter(function(i){
+        return typeof i == 'number';
+    });
+    </code>
+</pre>
+
+                <p>En este caso el nuevo arreglo contiene los valores que sean de tipo number.</p>
+
+                <h2>3. Array.reduce()</h2>
+                <p>El método reduce() aplica una función que recibe dos parámetros, valor anterior y valor actual y retorna un nuevo valor reducido.</p>
+                <p>Sino se especifica un valor inicial, el valor anterior sera igual al primer elemento del arreglo y el valor actual al segundo:</p>
+<pre>
+    <code class="language-javascript">
+    var array = [1,2,3];
+
+    array.reduce(function(valorAnterior, valorActual){
+        return valorAnterior + valorActual;
+    });
+
+    //Primer llamado
+    //valorAnterior = 1 , valorActual = 2
+
+    //Segundo Llamado
+    //valorAnterior = 3, valorActual = 3
+
+    //return 6;
+    </code>
+</pre>
+                <p>En el caso de que se especifique el valor inicial, el valor anterior sera igual a este:</p>
+<pre>
+    <code class="language-javascript">
+    var array = [1,2,3];
+
+    array.reduce(function(valorAnterior, valorActual){
+        return valorAnterior + valorActual;
+    }, 4);
+
+    //Primer llamado
+    //valorAnterior = 4 , valorActual = 1
+
+    //Segundo Llamado
+    //valorAnterior = 5, valorActual = 2
+
+    //Tercer Llamado
+    //valorAnterior = 7, valorActual = 3
+
+    //return 10;
+    </code>
+</pre>
+                <h2>4. Array.sort()</h2>
+                <p>El método sort() nos devuelve un arreglo con los elementos ordenados, sino le pasamos una función que defina el tipo de ordenamiento, este lo hará de acuerdo a la posición de su valor en el estándar Unicode.</p>
+                <p>Ejemplo sin función de comparación</p>
+<pre>
+    <code class="language-javascript">
+    var array = ["rojo","amarillo","verde"];
+
+    array.sort();
+    </code>
+</pre>
+                <p>Ejemplo con función de comparación</p>
+<pre>
+    <code class="language-javascript">
+    var array = ["rojo","amarillo","verde"];
+
+    array.sort(function(a,b){
+        return a < b;
+    });
+    </code>
+</pre>
+                <p>Podríamos decir que el primer caso el método sort() ordeno el arreglo de "menor a mayor" (abc) y en el segundo caso de "mayor a menor" (zyx).</p>
+
+                <h2>5. Array.join()</h2>
+                <p>El método join() es muy sencillo pero eficaz, siempre los usamos cuando queremos unir los elementos de nuestro arreglo en una cadena, le podemos pasar como parametro una cadena que se encarga de separa los elementos del arreglo, si se omite se separan por una coma.</p>
+<pre>
+    <code class="language-javascript">
+    var array = ['script','web'];
+
+    array.join(' ');
+    </code>
+</pre>
+
+                <h2>Algunos ejemplos</h2>
+                <p>Ahora te dejo unos ejemplos un poco mas complejos en donde veras la utilidad de las funciones que describimos anteriormente:</p>
+                <p>Si ves esta sintaxis</p>
+<pre>
+    <code class="language-javascript">
+    (param1) => { statements }
+    (param1) => expression
+    </code>
+</pre>
+                <p>Son <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Funciones/Arrow_functions">Arrow functions</a> y equivalen a</p>
+<pre>
+    <code class="language-javascript">
+    function(param1){return param1}
+    function(param1)return param1
+    </code>
+</pre>
+                <h3>1. Encuentra el entero impar</h3>
+                <p>Dado un arreglo, encuentre el entero que aparece un numero impar de veces.Siempre habrá un único entero que aparece un numero impar de veces.</p>
+<pre>
+    <code class="language-javascript">
+    function findOdd(A) {
+        return A.reduce((a,b) => a ^ b);
+    }
+
+    console.log(findOdd([20,1,-1,2,-2,3,3,5,5,1,2,4,20,4,-1,-2,5]));
+    console.log(findOdd([5,4,3,2,1,5,4,3,2,10,10]));
+    console.log(findOdd([10]));
+    </code>
+</pre>
+                <h3>2. Remover de un arreglo el valor especificado</h3>
+                <p>Dado un arreglo de números, implementar una función que me retorne un nuevo arreglo sin el valor especificado.</p>
+<pre>
+    <code class="language-javascript">
+    function array_diff(a, b) {
+        return a.filter((i)=>i!=b);
+    }
+
+    console.log(array_diff([1,2],1));
+    console.log(array_diff([1,2,2,2,3],2));
+    </code>
+</pre>
+                <h3>3. Ordenar personas</h3>
+                <p>Implementar una función que me permita ordenar a un listado de personas por edad, de menor a mayor.</p>
+<pre>
+    <code class="language-javascript">
+    function OrderPeople(people){
+        return people.sort((a,b) => a.age - b.age  );
+    }
+
+    console.log(OrderPeople([   { age: 83, name: 'joel' },
+                    { age: 46, name: 'roger' },
+                    { age: 99, name: 'vinny' }
+    ]));
+    </code>
+</pre>
+                <h3>4. Orden, por favor</h3>
+                <p>Tu tarea es ordenar un string, cada palabra del string contiene un numero del 1 al 9, el numero indica la posición de la palabra</p>
+<pre>
+    <code class="language-javascript">
+    function order(words){
+        return words.split(' ').sort((a, b) => a.match(/\d/) - b.match(/\d/)).join(' ');
+    }
+
+    console.log(order("is2 Thi1s T4est 3a"));
+    </code>
+</pre>
+                <h3>5. Encuentra las mayusculas</h3>
+                <p>Escribe una función que tome una palabra como argumento y que retorne una lista con los indices de las letras mayúsculas.</p>
+
+<pre>
+    <code class="language-javascript">
+    var capitals = function (word) {
+        return word.split('').map((i) => /[A-Z]/.test(i) ? word.indexOf(i) : 'x').filter((i) => i != 'x');
+    }
+
+    console.log(capitals('CodEWaRs'));
+    </code>
+</pre>
+                <h2>Bibliográfia</h2>
+                <ol>
+                    <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/map">Array.prototype.map()</a></li>
+                    <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/filter">Array.prototype.filter()</a></li>
+                    <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reduce">Array.prototype.reduce()</a></li>
+                    <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/sort">Array.prototype.sort()</a></li>
+                    <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/join">Array.prototype.join()</a></li>
+                </ol>
+
+                <div class="post-author">
+                    <a href="">
+                        <img src="images/perfil.jpg" alt="" width="80" height="80">
+                    </a>
+                    <div class="post-author-description">
+                        <h4>Nicolas Vogler</h4>
+                        <p>Estudiante en Analisis de sistemas, Profesorado universitario de informatica, Lic en informatica en la universidad UNaM. Apasionado por el desarrollo web, seguridad informatica, redes informaticas, tecnologia CISCO.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--Disqus comment-->
+        <div id="disqus_thread" class="container-post"></div>
+        <script>
+            !function(){var e=document,t=e.createElement("script");t.src="//voglernicolas.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)}();
+        </script>
+
+        <footer class="footer">
+            <div class="container-post">
+
+                <div class="footer-social-media footer-centrar">
+                    <div class="social-media">
+                        <a class="social-media-icon footer-icon" href="https://www.facebook.com/nicolasvogler0"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a class="social-media-icon footer-icon" href="https://twitter.com/Vogler_Nicolas"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a class="social-media-icon footer-icon" href="https://github.com/voglernicolas"><i class="fa fa-github" aria-hidden="true"></i></a>
+                    </div>
+                    <br>
+
+                </div>
+            </div>
+        </footer>
+        <link rel="stylesheet" href="css/style.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/230fbef2fe.css" media="all">
+        <link rel="stylesheet" href="css/prism.min.css">
+        <script src="js/prism.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+        <script src="js/platzi.min.js"></script>
+    </body>
+</html>
